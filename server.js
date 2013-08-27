@@ -23,12 +23,6 @@ var BookModel = mongoose.model('Book', Book);
 // configure server
 app.configure(function(){
 
-    //app.engine('.html', consolidate.underscore);
-
-    //app.set('view engine', 'html');
-
-    //app.set('views', applicationRoot + '/js/views');
-
     // where to serve static content
     app.use(
         express.static(
