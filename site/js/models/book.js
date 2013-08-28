@@ -12,5 +12,9 @@ app.Book = Backbone.Model.extend({
         if (options.coverImage) {
             this.set('coverImage', 'img/' + options.coverImage);
         }
+    },
+    parse: function(response){
+        response.id = response._id;
+        return response;
     }
 });
