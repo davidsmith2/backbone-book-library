@@ -5,23 +5,26 @@ app.LibraryView = Backbone.View.extend({
     events: {
         'click #add': 'addBook'
     },
-    initialize: function(initialBooks){
+    initialize: function(){
         this.collection = new app.Library();
         this.collection.fetch({reset: true});
         this.render();
-        this.listenTo(this.collection, 'add', this.renderBook);
-        this.listenTo(this.collection, 'reset', this.render);
+        this.listenTo(this.collection, 'change', this.render);
     },
     render: function(){
-        this.collection.each(function(item){
-            this.renderBook(item);
-        }, this);
-    },
-    renderBook: function(item){
-        var bookView = new app.BookView({
-            model: item
+        var table = $('#viewBooks tbody').empty();
+
+        this.collection.each(function(book){
+
+            var bookEntry = new app.BookView({
+                model: book
+            });
+
+            table.append( bookEntry.render().el );
+
         });
-        this.$el.append( bookView.render().el );
+
+        return this;
     },
     addBook: function(e){
         e.preventDefault();

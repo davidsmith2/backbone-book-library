@@ -1,7 +1,7 @@
 var app = app || {};
 
 app.BookView = Backbone.View.extend({
-    tagName: 'div',
+    tagName: 'tr',
     className: 'bookContainer',
     template: _.template( $('#bookTemplate').html() ),
     events: {

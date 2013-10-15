@@ -2,13 +2,21 @@
 var applicationRoot = __dirname,
     express = require('express'),
     path = require('path'),
-    mongoose = require('mongoose');
+    mongoose = require('mongoose'),
+    dataTable = require('mongoose-datatable');
+
+dataTable.configure({
+    debug: true,
+    verbose: true
+});
 
 // create server
 var app = express();
 
 // connect to database
 mongoose.connect('mongodb://localhost/library_database');
+
+mongoose.plugin(dataTable.init);
 
 // schemas
 
@@ -67,13 +75,27 @@ app.get('/api', function(request, response){
 
 // get books
 app.get('/api/books', function(request, response){
-    return BookModel.find(function(err, books){
-        if (!err) {
-            response.send(books);
-        } else {
-            return console.log(err);
-        }
-    });
+    if (typeof request.query['_'] !== 'undefined') {
+        BookModel.dataTable(request.query, function (err, books) {
+            if (!err) {
+                return response.send(books);
+            } else {
+                return console.log(err);
+            }
+        });
+    } else {
+        return BookModel.find(function (err, books) {
+            if (!err) {
+                response.send(books);
+            } else {
+                return console.log(err);
+            }
+        });
+    }
+});
+
+app.get('/api/books', function(request, response){
+
 });
 
 // add a book

@@ -12,8 +12,6 @@
         <h2>Add a Book</h2>
         <form id="addBook" action="#">
             <div>
-                <label for="coverImage">Cover Image:</label>
-                <input id="coverImage" type="file" />
                 <label for="title">Title:</label>
                 <input id="title" type="text" />
                 <label for="author">Author:</label>
@@ -25,26 +23,36 @@
                 <button id="add">Add</button>
             </div>
         </form>
+        <table id="viewBooks">
+            <thead>
+                <tr>
+                    <th class="no-search">Title</th>
+                    <th class="no-search">Author</th>
+                    <th class="no-search">Release Date</th>
+                    <th class="no-search">Keywords</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
     </div>
     <script id="bookTemplate" type="text/template">
-        <img width="80" height="106" src="<%= coverImage %>" />
-        <ul>
-            <li><%= title %></li>
-            <li><%= author %></li>
-            <li><%= $.format.date( new Date( releaseDate ), 'MMMM yyyy' ) %></li>
-            <li>
-                <ul class="keywords">
-                    <% _.each(keywords, function(keyobj){ %>
-                        <li><%= keyobj.keyword %></li>
-                    <% }); %>
-                </ul>
-            </li>
-        </ul>
-        <button class="delete">Delete</button>
+        <td><%= title %></td>
+        <td><%= author %></td>
+        <td><%= $.format.date( new Date( releaseDate ), 'MMMM yyyy' ) %></td>
+        <td>
+            <ul class="keywords">
+                <% _.each(keywords, function(keyobj){ %>
+                    <li><%= keyobj.keyword %></li>
+                <% }); %>
+            </ul>
+        </td>
     </script>
     <script src="js/lib/jquery.min.js" ></script>
     <script src="js/lib/jquery-ui-1.10.3.custom.min.js"></script>
     <script src="js/lib/jquery.dateFormat-1.0.js"></script>
+    <script src="js/lib/jquery.dataTables.js"></script>
+    <script src="js/lib/jquery.dataTables.fnReloadAjax.js"></script>
     <script src="js/lib/underscore-min.js"></script>
     <script src="js/lib/backbone-min.js"></script>
     <script src="js/models/book.js"></script>

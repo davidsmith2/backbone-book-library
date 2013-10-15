@@ -2,6 +2,7 @@ body {
 	background-color: #eee;
 }
 
+/*
 .bookContainer {
 	outline: 1px solid #aaa;
 	width: 350px;
@@ -29,6 +30,7 @@ body {
     float: right;
     margin: 10px;
 }
+*/
 
 #addBook label {
 	width: 100px;
