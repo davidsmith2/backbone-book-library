@@ -6,7 +6,6 @@ app.BookView = Backbone.View.extend({
     template: _.template( $('#bookTemplate').html() ),
     events: {
         'click .delete': 'deleteBook'
-
     },
     initialize: function(options){
         this.model = options.model;

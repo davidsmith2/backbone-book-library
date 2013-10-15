@@ -2,11 +2,14 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Backbone.js Library</title>
+    <title>Backbone Book Library</title>
+    <link rel="stylesheet" type="text/css" href="css/cupertino/jquery-ui-1.10.3.custom.css">
     <link rel="stylesheet" type="text/css" href="css/screen.css">
 </head>
 <body>
     <div id="books">
+        <h1>Backbone Book Library</h1>
+        <h2>Add a Book</h2>
         <form id="addBook" action="#">
             <div>
                 <label for="coverImage">Cover Image:</label>
@@ -30,14 +33,17 @@
             <li><%= author %></li>
             <li><%= $.format.date( new Date( releaseDate ), 'MMMM yyyy' ) %></li>
             <li>
-                <% _.each(keywords, function(keyobj){ %>
-                    <%= keyobj.keyword %>
-                <% }); %>
+                <ul class="keywords">
+                    <% _.each(keywords, function(keyobj){ %>
+                        <li><%= keyobj.keyword %></li>
+                    <% }); %>
+                </ul>
             </li>
         </ul>
         <button class="delete">Delete</button>
     </script>
     <script src="js/lib/jquery.min.js" ></script>
+    <script src="js/lib/jquery-ui-1.10.3.custom.min.js"></script>
     <script src="js/lib/jquery.dateFormat-1.0.js"></script>
     <script src="js/lib/underscore-min.js"></script>
     <script src="js/lib/backbone-min.js"></script>

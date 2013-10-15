@@ -20,6 +20,10 @@ body {
     list-style-type: none;
     margin-bottom: 0;
 }
+.bookContainer .keywords {
+    list-style-type: disc;
+    margin-left:30px;
+}
 
 .bookContainer button {
     float: right;
