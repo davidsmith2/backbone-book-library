@@ -1,7 +1,7 @@
 var app = app || {};
 
 app.LibraryView = Backbone.View.extend({
-    el: '#books',
+    el: '#library',
     events: {
         'click #add': 'addBook'
     },
@@ -9,27 +9,26 @@ app.LibraryView = Backbone.View.extend({
         this.collection = new app.Library();
         this.collection.fetch({reset: true});
         this.render();
-        this.listenTo(this.collection, 'change', this.render);
+        this.listenTo(this.collection, 'reset', this.render);
+        this.listenTo(this.collection, 'add', this.renderBook);
     },
     render: function(){
-        var table = $('#viewBooks tbody').empty();
+        var self = this;
 
-        this.collection.each(function(book){
-
-            var bookEntry = new app.BookView({
-                model: book
-            });
-
-            table.append( bookEntry.render().el );
-
-        });
+        this.collection.each(function (book) {
+            self.renderBook(book);
+        }, this);
 
         return this;
+    },
+    renderBook: function (book) {
+        var bookView = new app.BookView({model: book}).render().el;
+        this.$('#booksTable tbody').append(bookView);
     },
     addBook: function(e){
         e.preventDefault();
         var formData = {};
-        $('#addBook > div').children('input').each(function(i, el){
+        $('#bookForm > div').children('input').each(function(i, el){
             if ($(el).val() !== '') {
                 if (el.id === 'keywords') {
                     formData[el.id] = [];

@@ -7,10 +7,10 @@
     <link rel="stylesheet" type="text/css" href="css/screen.css">
 </head>
 <body>
-    <div id="books">
+    <div id="library">
         <h1>Backbone Book Library</h1>
         <h2>Add a Book</h2>
-        <form id="addBook" action="#">
+        <form id="bookForm" action="#">
             <div>
                 <label for="title">Title:</label>
                 <input id="title" type="text" />
@@ -23,13 +23,14 @@
                 <button id="add">Add</button>
             </div>
         </form>
-        <table id="viewBooks">
+        <table id="booksTable">
             <thead>
                 <tr>
-                    <th class="no-search">Title</th>
-                    <th class="no-search">Author</th>
-                    <th class="no-search">Release Date</th>
-                    <th class="no-search">Keywords</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Release Date</th>
+                    <th>Keywords</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
@@ -47,6 +48,7 @@
                 <% }); %>
             </ul>
         </td>
+        <td><button class="delete">Delete</button></td>
     </script>
     <script src="js/lib/jquery.min.js" ></script>
     <script src="js/lib/jquery-ui-1.10.3.custom.min.js"></script>
