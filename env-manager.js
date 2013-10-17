@@ -17,6 +17,7 @@ var EnvManager = function (app) {
                     )
                 )
             );
+            app.use('/js/lib/', express.static('node_modules/requirejs/'));
             app.use(express.bodyParser());
             app.use(express.methodOverride());
             app.use(app.router);

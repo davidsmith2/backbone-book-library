@@ -1,6 +1,16 @@
-var app = app || {};
+define([
+    'underscore',
+    'backbone',
+    'models/book'
+],
 
-app.Library = Backbone.Collection.extend({
-    model: app.Book,
-    url: '/api/books'
+function (_, Backbone, Book) {
+
+    var Library = Backbone.Collection.extend({
+        model: Book,
+        url: '/api/books'
+    });
+
+    return Library;
+
 });

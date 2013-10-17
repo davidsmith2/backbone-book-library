@@ -1,11 +1,12 @@
 {
-    "name": "backbone-library",
+    "name": "backbone-book-library",
     "version": "0.0.1",
     "description": "A simple library application using Backbone.js",
     "dependencies": {
         "express": "~3.1.0",
         "path": "~0.4.9",
         "mongoose": "~3.5.5",
-        "mongoose-dataTable": "latest"
+        "mongoose-dataTable": "latest",
+        "requirejs": "latest"
     }
 }
